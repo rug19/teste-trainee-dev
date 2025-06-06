@@ -112,4 +112,12 @@ Lembre-se que avaliaremos:
 * **Comunicação:** Clareza do seu relatório técnico (`README.md`).
 * **Controle de Versão:** Qualidade e granularidade das suas mensagens de commit.
 
+---
+
+## 9. Uma Palavra Final
+
+Entendemos que desafios como este podem ser complexos. Se você não conseguir concluir 100% dos itens, não desanime! Entregue o máximo que conseguir e documente seu progresso.
+
+Para nós, a jornada é tão importante quanto o destino. Não estamos buscando um profissional que saiba tudo, mas sim alguém com vontade de aprender, evoluir e que entenda que os erros são parte fundamental do crescimento.
+
 **Boa sorte!**
