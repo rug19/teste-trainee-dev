@@ -48,17 +48,18 @@ A seguir estão os pontos exatos que você deve abordar.
 ### 5.1. Bugs a Corrigir
 
 1.  Ao clicar no botão “Salvar”, a tarefa está sendo adicionada duas vezes.
-2.  O texto do botão de limpar todas as tarefas não está em português.
-3.  O botão “Exibir Tarefas Concluídas” está, na verdade, ocultando as tarefas concluídas.
-4.  O botão “Ocultar Tarefas Concluídas” tem o comportamento invertido, exibindo as tarefas concluídas.
-5.  Ao clicar em “Limpar Tarefas Concluídas”, a ação é executada sem pedir uma confirmação ao usuário.
-6.  O botão “Limpar Tarefas Concluídas” está removendo as tarefas não concluídas em vez das concluídas.
-7.  O botão “Editar” não está funcional. O comportamento esperado é: ao clicar, o campo “Título da Tarefa” deve ser preenchido com o texto da tarefa selecionada. Ao salvar, o item na lista deve ser atualizado e o campo de texto limpo.
-8.  O botão “Editar” está desalinhado e deve ser posicionado ao lado do botão “Remover”.
-9.  O botão “Remover” deve ter a cor vermelha para indicar uma ação destrutiva.
-10. A lista de tarefas não apresenta uma barra de rolagem quando o número de itens ultrapassa a altura do painel, impedindo a visualização de todas as tarefas.
-11. Salvar sem digitar um “Título da Tarefa” está adicionando um item em branco à lista.
-12. Digitar apenas espaços no campo “Título da Tarefa” e salvar também está adicionando um item em branco.
+2.  Só está sendo possível salvar uma tarefa a primeira vez que clica no botão “Salvar”, só é possível salvar uma nova tarefa após atualizar a página (F5)
+3.  O texto do botão de limpar todas as tarefas não está em português.
+4.  O botão “Exibir Tarefas Concluídas” está, na verdade, ocultando as tarefas concluídas.
+5.  O botão “Ocultar Tarefas Concluídas” tem o comportamento invertido, exibindo as tarefas concluídas.
+6.  Ao clicar em “Limpar Tarefas Concluídas”, a ação é executada sem pedir uma confirmação ao usuário.
+7.  O botão “Limpar Tarefas Concluídas” está removendo as tarefas não concluídas em vez das concluídas.
+8.  O botão “Editar” não está funcional. O comportamento esperado é: ao clicar, o campo “Título da Tarefa” deve ser preenchido com o texto da tarefa selecionada. Ao salvar, o item na lista deve ser atualizado e o campo de texto limpo.
+9.  O botão “Editar” está desalinhado e deve ser posicionado ao lado do botão “Remover”.
+10.  O botão “Remover” deve ter a cor vermelha para indicar uma ação destrutiva.
+11. A lista de tarefas não apresenta uma barra de rolagem quando o número de itens ultrapassa a altura do painel, impedindo a visualização de todas as tarefas.
+12. Salvar sem digitar um “Título da Tarefa” está adicionando um item em branco à lista.
+13. Digitar apenas espaços no campo “Título da Tarefa” e salvar também está adicionando um item em branco.
 
 ### 5.2. Melhorias a Implementar
 
@@ -75,7 +76,7 @@ A seguir estão os pontos exatos que você deve abordar.
 
 Ao finalizar todo o trabalho, você deve:
 
-1.  **Fazer o commit** de todo o código funcional para este repositório. Certifique-se de que o histórico de commits esteja claro e organizado.
+1.  **Fazer o commit de cada item separadamente**, conforme detalhado na seção "Boas Práticas" abaixo. O histórico de commits é uma parte crucial da avaliação.
 
 2.  **Substituir o conteúdo deste `README.md`** pelo seu relatório técnico final. O seu relatório deve conter as seguintes seções:
 
@@ -89,13 +90,23 @@ Ao finalizar todo o trabalho, você deve:
 
 ---
 
-## 7. Critérios de Avaliação
+## 7. Boas Práticas e Uso de Ferramentas
+
+### Commits Atômicos
+Cada bug corrigido e cada melhoria implementada deve ser um commit individual no repositório. Suas mensagens de commit devem ser claras e descritivas (ex: `fix: corrige a duplicação de tarefas ao salvar` ou `feat: implementa a exportação para PDF`). Isso é fundamental para avaliarmos seu processo de desenvolvimento.
+
+### Uso de Inteligência Artificial
+O uso de ferramentas de Inteligência Artificial (como ChatGPT, GitHub Copilot, etc.) é permitido como um recurso de apoio. No entanto, o mais importante é que você **entenda profundamente** o código e as soluções que está entregando. Esteja preparado(a) para explicar suas escolhas e defender a lógica implementada no relatório e na entrevista técnica, pois o conhecimento da solução é de sua total responsabilidade.
+
+---
+
+## 8. Critérios de Avaliação
 
 Lembre-se que avaliaremos:
 * **Funcionalidade:** Cumprimento de todos os requisitos.
 * **Qualidade do Código:** Legibilidade, organização e boas práticas.
 * **Lógica e Eficiência:** Robustez das suas soluções.
 * **Comunicação:** Clareza do seu relatório técnico (`README.md`).
-* **Controle de Versão:** Qualidade das suas mensagens de commit.
+* **Controle de Versão:** Qualidade e granularidade das suas mensagens de commit.
 
 **Boa sorte!**
