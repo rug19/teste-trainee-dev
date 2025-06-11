@@ -27,7 +27,7 @@ Siga os passos abaixo para clonar, instalar e executar o projeto localmente:
    ```bash
    http://localhost:4200
    
-## Correções do erros iniciais
+## Correções dos erros iniciais
 
 1. Ao tentar executar o comando `npm start`, a aplicação não iniciava e o terminal exibia o erro:  
 `Missing script: "start"`.
@@ -45,14 +45,19 @@ Siga os passos abaixo para clonar, instalar e executar o projeto localmente:
 3. Erro de injeção do TodoService no NewTaskComponent
 
 - Causa: O erro foi causado pela ausência da importação do serviço `TodoService` no arquivo `new-task.component.ts`. 
-
 - Solução: Foi adicionada a importação do `TodoService` no arquivo `new-task.component.ts`. 
 
 4. FontAwesome não encontrado
 
 - Causa: A biblioteca `@fortawesome/fontawesome-free` estava sendo referenciada no `angular.json`, mas não havia sido instalada, o que impedia a aplicação de compilar.
-
 - Solução: Instalei a dependência com `npm install @fortawesome/fontawesome-free`, permitindo que o Angular encontrasse os arquivos CSS e finalizasse a build com sucesso.
 
+## Relatório de Correção de Bugs
+Detalhamento dos bugs identificados pelo time de QA, com suas causas e as soluções aplicadas.
+
+Bug 1: Tarefa sendo adicionada duas vezes ao clicar no botão “Salvar”
+
+- Causa: No método responsável por salvar uma nova tarefa, a linha que adiciona a tarefa (`this.todoService.addTodo(newTodo);`) estava duplicada. 
+- Solução: Removi a linha duplicada, garantindo que a tarefa seja adicionada apenas uma vez por clique no botão "Salvar".
 
 
