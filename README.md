@@ -48,7 +48,11 @@ Siga os passos abaixo para clonar, instalar e executar o projeto localmente:
 
 - Solução: Foi adicionada a importação do `TodoService` no arquivo `new-task.component.ts`. 
 
+4. FontAwesome não encontrado
 
+- Causa: A biblioteca `@fortawesome/fontawesome-free` estava sendo referenciada no `angular.json`, mas não havia sido instalada, o que impedia a aplicação de compilar.
+
+- Solução: Instalei a dependência com `npm install @fortawesome/fontawesome-free`, permitindo que o Angular encontrasse os arquivos CSS e finalizasse a build com sucesso.
 
 
 
