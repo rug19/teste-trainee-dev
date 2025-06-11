@@ -21,7 +21,6 @@ export class NewTaskComponent {
       completed: false
     };
 
-    // this.todoService.addTodo(newTodo);
     this.todoService.addTodo(newTodo);
     this.newTaskTitle = '';
     this.count++
