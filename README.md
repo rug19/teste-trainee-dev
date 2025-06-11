@@ -32,10 +32,23 @@ Siga os passos abaixo para clonar, instalar e executar o projeto localmente:
 1. Ao tentar executar o comando `npm start`, a aplicação não iniciava e o terminal exibia o erro:  
 `Missing script: "start"`.
 
-- Causa  
-O arquivo `package.json` não possuía o script `start` definido, o que impedia o comando de saber como iniciar a aplicação Angular.
+- Causa: O arquivo `package.json` não possuía o script `start` definido, o que impedia o comando de saber como iniciar a aplicação Angular.
 
-- Solução  
-Incluí o script `"start": "ng serve"` no bloco `"scripts"` do `package.json`, permitindo a execução da aplicação com `npm start`.
+- Solução: Incluí o script `"start": "ng serve"` no bloco `"scripts"` do `package.json`, permitindo a execução da aplicação com `npm start`.
+
+2. Nome incorreto da classe HeaderComponent
+
+- Causa: O nome da classe exportada no arquivo `header.component.ts` estava escrito incorretamente como `HeadeComponent`, o que impedia sua importação correta no `AppModule`.
+
+- Solução: Corrigi a digitação da classe exportada, renomeando de `HeadeComponent` para `HeaderComponent`, o que normalizou o import e o uso do componente na aplicação.
+
+3. Erro de injeção do TodoService no NewTaskComponent
+
+- Causa: O erro foi causado pela ausência da importação do serviço `TodoService` no arquivo `new-task.component.ts`. 
+
+- Solução: Foi adicionada a importação do `TodoService` no arquivo `new-task.component.ts`. 
+
+
+
 
 
