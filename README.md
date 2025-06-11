@@ -76,6 +76,7 @@ Bug 4: Texto do botão “Exibir Tarefas Concluídas” não refletia a ação e
 - Solução: A condição foi ajustada para que o texto do botão indique corretamente a ação que será executada (exibir ou ocultar tarefas concluídas).
 
 Bug 5: Botão “Ocultar Tarefas Concluídas” exibia as tarefas ao invés de ocultar
+
 - Causa: A lógica da condição estava invertida, fazendo com que o botão executasse a ação contrária à esperada.
 - Solução: A mesma correção aplicada no Bug 4 resolveu este caso, ajustando a lógica e o texto exibido no botão para garantir que a ação corresponda à expectativa do usuário.
 
@@ -92,7 +93,6 @@ Bug 7: Botão “Limpar Tarefas Concluídas” estava removendo tarefas não con
 Bug 8: O botão “Editar” não está funcional
 
 - Causa: O botão "Editar" estava presente na interface, mas sem realizar a ação esperada de permitir a edição da tarefa. O comportamento esperado era: preencher o campo de título com o texto da tarefa selecionada e, ao clicar em "Salvar", atualizar a tarefa existente.
-
 - Solução: 
    - Foi adicionada uma referência local (#taskForm) ao componente de criação de tarefas (<app-new-task>) para possibilitar o controle externo do formulário.
    - Foi implementado o método startEditing(todo: Todo) no componente, que:
@@ -101,3 +101,29 @@ Bug 8: O botão “Editar” não está funcional
      -  Ao clicar em “Salvar”, chama o método updateTodo() ao invés de addTodo() caso esteja editando;
   - Após salvar, o formulário é limpo e o modo de edição é desativado, permitindo a adição de novas tarefas normalmente.
   
+Bug 9: O botão “Editar” estava desalinhado visualmente
+
+  - Causa: Os botões estavam fora de um contêiner comum e sem espaçamento adequado, o que resultava em desalinhamento visual.
+  - Solução: Foi criada uma div contêiner para agrupar os botões "Editar" e "Remover". Em seguida, foi aplicada uma margin ao botão "Editar" para garantir espaçamento entre os dois, garantindo alinhamento e uma interface mais limpa e organizada.
+
+Bug 10: O botão “Remover” não possui destaque visual apropriado para uma ação destrutiva
+
+- Causa: Ausência de estilização diferenciada para o botão responsável por excluir tarefas.
+- Solução: A cor do botão foi alterada para vermelho, seguindo a convenção de UI para indicar ações destrutivas e alertar visualmente o usuário.
+
+Bug 11:  Lista de tarefas não apresenta barra de rolagem
+
+- Causa: Quando o número de tarefas ultrapassava a altura visível do painel, as tarefas adicionais não podiam ser visualizadas, pois não havia barra de rolagem.
+- - Solução: Foi aplicado overflow-y: auto e um max-height apropriado ao container da lista de tarefas, permitindo que a barra de rolagem apareça automaticamente quando necessário. Isso garante que todas as tarefas sejam acessíveis ao usuário.
+
+Bug 12: Salvamento sem título adicionava tarefa em branco
+
+- Status: Já resolvido anteriormente
+- Causa: Ausência de validação no campo de entrada permitia o envio de tarefas sem título.
+- Solução: A validação if (!this.newTaskTitle.trim()) return; foi implementada durante a resolução do bug 8, impedindo o envio de tarefas com campo vazio.
+
+Bug: 13: Campo com apenas espaços adiciona tarefa em branco
+
+- Status: Já resolvido anteriormente.
+- Causa: O campo aceitava entradas contendo apenas espaços.
+- Solução: O método trim() na verificação if (!this.newTaskTitle.trim()) return; também impede que entradas com apenas espaços sejam salvas.
