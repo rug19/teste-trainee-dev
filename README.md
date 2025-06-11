@@ -60,4 +60,44 @@ Bug 1: Tarefa sendo adicionada duas vezes ao clicar no botão “Salvar”
 - Causa: No método responsável por salvar uma nova tarefa, a linha que adiciona a tarefa (`this.todoService.addTodo(newTodo);`) estava duplicada. 
 - Solução: Removi a linha duplicada, garantindo que a tarefa seja adicionada apenas uma vez por clique no botão "Salvar".
 
+Bug 2: Problema ao adicionar múltiplas tarefas sem recarregar a página
 
+- Causa: O componente NewTaskComponent utilizava uma variável count para limitar o número de tarefas adicionadas. Após o primeiro cadastro, count era incrementado e bloqueava a execução da função addTask(), impedindo novas adições sem recarregar a página.
+- Slução: Removi a variável count e a lógica condicional que impedia múltiplos envios. A função addTask() agora permite adicionar quantas tarefas o usuário desejar, sem necessidade de recarregar a página.
+
+Bug 3: Texto do botão “Clear All” não estava em português
+
+- Causa: O texto do botão responsável por limpar todas as tarefas estava em inglês ("Clear All"), causando inconsistência na interface para usuários que esperam a aplicação em português.
+- Solução: Atualizei o valor da variável para o texto em português “Limpar Todas as Tarefas”, garantindo consistência no idioma da interface e melhor experiência para o usuário.
+
+Bug 4: Texto do botão “Exibir Tarefas Concluídas” não refletia a ação executada
+
+- Causa: O botão mostrava o texto baseado no estado atual (showCompletedTasks), em vez de indicar o que aconteceria ao clicar.
+- Solução: A condição foi ajustada para que o texto do botão indique corretamente a ação que será executada (exibir ou ocultar tarefas concluídas).
+
+Bug 5: Botão “Ocultar Tarefas Concluídas” exibia as tarefas ao invés de ocultar
+- Causa: A lógica da condição estava invertida, fazendo com que o botão executasse a ação contrária à esperada.
+- Solução: A mesma correção aplicada no Bug 4 resolveu este caso, ajustando a lógica e o texto exibido no botão para garantir que a ação corresponda à expectativa do usuário.
+
+Bug 6: Limpar Tarefas Concluídas" sem confirmação
+
+- Causa: Ao clicar no botão “Limpar Tarefas Concluídas”, a exclusão era realizada imediatamente, sem confirmação do usuário.
+- Solução: Foi implementada uma janela de confirmação (confirm()) para solicitar a autorização do usuário antes de excluir as tarefas concluídas.
+
+Bug 7: Botão “Limpar Tarefas Concluídas” estava removendo tarefas não concluídas
+
+- Causa: O filtro aplicado no método clearCompletedTasks() estava mantendo apenas as tarefas com completed === true, ou seja, removendo as não concluídas.
+- Solução: O filtro foi invertido para manter apenas as tarefas com completed === false, garantindo que apenas as tarefas concluídas sejam removidas.
+
+Bug 8: O botão “Editar” não está funcional
+
+- Causa: O botão "Editar" estava presente na interface, mas sem realizar a ação esperada de permitir a edição da tarefa. O comportamento esperado era: preencher o campo de título com o texto da tarefa selecionada e, ao clicar em "Salvar", atualizar a tarefa existente.
+
+- Solução: 
+   - Foi adicionada uma referência local (#taskForm) ao componente de criação de tarefas (<app-new-task>) para possibilitar o controle externo do formulário.
+   - Foi implementado o método startEditing(todo: Todo) no componente, que:
+     -  Preenche o campo de input com o título da tarefa selecionada;
+     -  Armazena o ID da tarefa, ativando o modo de edição;
+     -  Ao clicar em “Salvar”, chama o método updateTodo() ao invés de addTodo() caso esteja editando;
+  - Após salvar, o formulário é limpo e o modo de edição é desativado, permitindo a adição de novas tarefas normalmente.
+  
