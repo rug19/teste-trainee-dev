@@ -9,7 +9,7 @@
       placeholder="Descreva aqui de forma breve a sua tarefa."
     />
   </div>
-  <button class="new-task_button" (click)="addTask()">
-    Salvar
+  <button class="new-task_button" (click)="submitTask()">
+    {{ isEditing ? 'Atualizar' : 'Salvar' }}
   </button>
 </div>

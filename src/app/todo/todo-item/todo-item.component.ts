@@ -5,11 +5,12 @@ import { TodoService } from '../../shared/services/todo.service';
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.css']
+  styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent {
   @Input() todo!: Todo;
   @Output() deletedTodo: EventEmitter<number> = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<Todo>();
 
   constructor(private todoService: TodoService) {}
 
@@ -21,5 +22,9 @@ export class TodoItemComponent {
 
   onTaskChecked(): void {
     this.todoService.updateTodo(this.todo);
+  }
+
+  onEdit() {
+    this.edit.emit(this.todo);
   }
 }
