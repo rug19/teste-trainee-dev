@@ -17,20 +17,25 @@ export class NewTaskComponent {
   submitTask() {
     if (!this.newTaskTitle.trim()) return;
 
-    this.isEditing && this.editingTodoId !== undefined
-      ? this.updateTask()
-      : this.addTask();
+    if (this.isEditing && this.editingTodoId !== undefined) {
+      this.updateTask();
+    } else {
+      //permite múltiplas tarefas separadas por '|'
+      this.newTaskTitle
+        .split('|')
+        .map((t) => t.trim())
+        .filter((t) => t)
+        .forEach((title) => {
+          const newTodo: Todo = {
+            id: this.todoService.getTodoNewId(),
+            title,
+            completed: false,
+          };
+          this.todoService.addTodo(newTodo);
+        });
+    }
 
     this.clearForm();
-  }
-
-  private addTask(): void {
-    const newTodo: Todo = {
-      id: this.todoService.getTodoNewId(),
-      title: this.newTaskTitle,
-      completed: false,
-    };
-    this.todoService.addTodo(newTodo);
   }
 
   private updateTask(): void {
