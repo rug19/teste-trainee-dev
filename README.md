@@ -159,13 +159,13 @@ Melhoria 4: Implementar um filtro para impedir a criação de tarefas com palavr
 Melhoria 5: Adicionada a funcionalidade de exportar a lista de tarefas visíveis (filtradas) para um arquivo PDF, permitindo ao usuário salvar ou imprimir sua lista.
 
 - Abordagem técnica:
-  - Utilizou-se a biblioteca jsPDF.
-  - Criado o método exportToPDF() que:
-  - Inicia um novo documento PDF.
-  - Define o título "Lista de Tarefas" no topo.
-  - Percorre a lista de tarefas filtradas (filteredTodos()), numerando cada uma e indicando seu status ([Concluída] ou [Pendente]).
-  - Cuida do espaço vertical (y) e adiciona uma nova página automaticamente se necessário.
-  - Salva o arquivo com o nome lista-de-tarefas.pdf.
+  - Foi utilizado a biblioteca jsPDF.
+    - Criado o método exportToPDF() que:
+      - Inicia um novo documento PDF.
+      - Define o título "Lista de Tarefas" no topo.
+      - Percorre a lista de tarefas filtradas (filteredTodos()), numerando cada uma e indicando seu status ([Concluída] ou [Pendente]).
+      - Cuida do espaço vertical (y) e adiciona uma nova página automaticamente se necessário.
+      - Salva o arquivo com o nome lista-de-tarefas.pdf.
 
 - Bibliotecas utilizadas: jsPDF
 
