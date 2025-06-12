@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Todo } from '../../shared/models/todo.model';
 import { TodoService } from 'src/app/shared/services/todo.service';
 import { Filter } from 'bad-words';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-task',
@@ -15,14 +16,38 @@ export class NewTaskComponent {
 
   constructor(private todoService: TodoService) {}
 
-badWords = [
-  'palavrão', 'merda', 'bosta', 'cu', 'caralho', 'porra', 'puta',
-  'viado', 'vagabunda', 'desgraçado', 'desgraça', 'corno', 'otário',
-  'babaca', 'arrombado', 'filha da puta', 'filho da puta', 'cabrão',
-  'idiota', 'peste', 'nojento', 'nojenta', 'imbecil', 'safado',
-  'safada', 'prostituta', 'corna', 'canalha', 'escroto', 'escrota'
-];
-
+  badWords = [
+    'palavrão',
+    'merda',
+    'bosta',
+    'cu',
+    'caralho',
+    'porra',
+    'puta',
+    'viado',
+    'vagabunda',
+    'desgraçado',
+    'desgraça',
+    'corno',
+    'otário',
+    'babaca',
+    'arrombado',
+    'filha da puta',
+    'filho da puta',
+    'cabrão',
+    'idiota',
+    'peste',
+    'nojento',
+    'nojenta',
+    'imbecil',
+    'safado',
+    'safada',
+    'prostituta',
+    'corna',
+    'canalha',
+    'escroto',
+    'escrota',
+  ];
 
   submitTask() {
     if (!this.newTaskTitle.trim()) return;
@@ -36,7 +61,11 @@ badWords = [
       .filter((t) => t);
 
     if (titles.some((title) => filter.isProfane(title))) {
-      alert('Não é permitido cadastrar tarefas com palavras obscenas.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Atenção',
+        text: 'Não é permitido cadastrar tarefas com palavras obscenas.',
+      });
       return;
     }
 
@@ -44,7 +73,7 @@ badWords = [
       this.updateTask();
     } else {
       titles.forEach((title) => {
-        //add a tarefa 
+        //add a tarefa
         const newTodo: Todo = {
           id: this.todoService.getTodoNewId(),
           title,
