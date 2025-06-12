@@ -127,3 +127,10 @@ Bug: 13: Campo com apenas espaços adiciona tarefa em branco
 - Status: Já resolvido anteriormente.
 - Causa: O campo aceitava entradas contendo apenas espaços.
 - Solução: O método trim() na verificação if (!this.newTaskTitle.trim()) return; também impede que entradas com apenas espaços sejam salvas.
+
+## Relatório de Implementação de Melhorias 
+
+Melhoria 1: Implementar um botão “Ordenar de A a Z”
+
+- Abordagem técnica: Foi criado um novo método sortTodosAZ() que utiliza a função localeCompare() para ordenar a lista todos com base no título da tarefa, respeitando a ordem alfabética da língua portuguesa. Um botão foi adicionado à interface para acionar esse método.
+- Bibliotecas utilizadas: Nenhuma biblioteca externa foi usada. A ordenação foi feita utilizando recursos nativos do JavaScript.
