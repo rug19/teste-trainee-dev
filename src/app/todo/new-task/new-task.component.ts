@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Todo } from '../../shared/models/todo.model';
 import { TodoService } from 'src/app/shared/services/todo.service';
+import { Filter } from 'bad-words';
 
 @Component({
   selector: 'app-new-task',
@@ -14,25 +15,43 @@ export class NewTaskComponent {
 
   constructor(private todoService: TodoService) {}
 
+badWords = [
+  'palavrão', 'merda', 'bosta', 'cu', 'caralho', 'porra', 'puta',
+  'viado', 'vagabunda', 'desgraçado', 'desgraça', 'corno', 'otário',
+  'babaca', 'arrombado', 'filha da puta', 'filho da puta', 'cabrão',
+  'idiota', 'peste', 'nojento', 'nojenta', 'imbecil', 'safado',
+  'safada', 'prostituta', 'corna', 'canalha', 'escroto', 'escrota'
+];
+
+
   submitTask() {
     if (!this.newTaskTitle.trim()) return;
+
+    const filter = new Filter();
+    filter.addWords(...this.badWords);
+    // Verifica cada título para palavras obscenas
+    const titles = this.newTaskTitle
+      .split('|')
+      .map((t) => t.trim())
+      .filter((t) => t);
+
+    if (titles.some((title) => filter.isProfane(title))) {
+      alert('Não é permitido cadastrar tarefas com palavras obscenas.');
+      return;
+    }
 
     if (this.isEditing && this.editingTodoId !== undefined) {
       this.updateTask();
     } else {
-      //permite múltiplas tarefas separadas por '|'
-      this.newTaskTitle
-        .split('|')
-        .map((t) => t.trim())
-        .filter((t) => t)
-        .forEach((title) => {
-          const newTodo: Todo = {
-            id: this.todoService.getTodoNewId(),
-            title,
-            completed: false,
-          };
-          this.todoService.addTodo(newTodo);
-        });
+      titles.forEach((title) => {
+        //add a tarefa 
+        const newTodo: Todo = {
+          id: this.todoService.getTodoNewId(),
+          title,
+          completed: false,
+        };
+        this.todoService.addTodo(newTodo);
+      });
     }
 
     this.clearForm();
