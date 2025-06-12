@@ -169,4 +169,11 @@ Melhoria 5: Adicionada a funcionalidade de exportar a lista de tarefas visíveis
 
 - Bibliotecas utilizadas: jsPDF
 
-Melhoria 6: 
+Melhoria 6: Todos os alert() e confirm() nativos do navegador foram substituídos por modais personalizados com a biblioteca SweetAlert2, proporcionando uma experiência de usuário mais moderna e amigável.
+
+- Abordagem técnica:
+  - Instalada a biblioteca sweetalert2.
+  - Substituídos os alert() por Swal.fire() com títulos, ícones e botões estilizados.
+  - Substituídos os confirm() por Swal.fire({ showCancelButton: true, ... }), capturando a confirmação do usuário por meio de then() e result.isConfirmed.
+
+- Bibliotecas utilizadas: sweetalert2
