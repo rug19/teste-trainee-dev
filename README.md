@@ -134,3 +134,39 @@ Melhoria 1: Implementar um botão “Ordenar de A a Z”
 
 - Abordagem técnica: Foi criado um novo método sortTodosAZ() que utiliza a função localeCompare() para ordenar a lista todos com base no título da tarefa, respeitando a ordem alfabética da língua portuguesa. Um botão foi adicionado à interface para acionar esse método.
 - Bibliotecas utilizadas: Nenhuma biblioteca externa foi usada. A ordenação foi feita utilizando recursos nativos do JavaScript.
+
+Melhoria 2: Adicionar tarefa ao pressionar a tecla Enter
+
+- Abordagem técnica: Foi adicionado o evento (keydown.enter)="submitTask()" ao campo de input do formulário de nova tarefa. Com isso, ao pressionar a tecla Enter enquanto o campo está focado, o método submitTask() é executado, permitindo a adição da tarefa sem a necessidade de clicar no botão "Salvar".
+- Bibliotecas Utilizadas: Nenhuma biblioteca externa foi utilizada. A funcionalidade foi implementada com recursos nativos do Angular e JavaScript.
+
+Melhoria 3: Permitir a adição de múltiplas tarefas de uma só vez
+
+- Abordagem técnica: Foi modificada a função submitTask() no componente de criação de tarefas (NewTaskComponent) para aceitar múltiplas tarefas separadas pelo caractere |. O conteúdo do campo de texto é dividido com .split('|'), cada segmento é limpo com .trim() e filtrado para remover entradas vazias. Em seguida, cada título válido é transformado em uma nova tarefa (Todo) e adicionada à lista por meio do TodoService.
+- Bibliotecas utilizadas: Nenhuma biblioteca externa foi utilizada. A implementação foi feita utilizando apenas funcionalidades nativas do JavaScript (métodos de string e array).
+
+Melhoria 4: Implementar um filtro para impedir a criação de tarefas com palavras ofensivas no campo "Título da Tarefa".
+
+- Abordagem técnica:
+    - Foi utilizado a biblioteca bad-words para filtrar palavras ofensivas.
+    - Foi criada uma lista personalizada de palavras ofensivas em português, armazenada no array badWords.
+    - A função submitTask():
+      - Divide o título da tarefa em múltiplos títulos (caso o caractere | seja usado).
+      - Verifica se algum dos títulos contém palavras ofensivas com filter.isProfane(title).
+      - Se encontrar, exibe um alert() com a mensagem: "Não é permitido cadastrar tarefas com palavras obscenas." e impede o cadastro.
+- Bibliotecas utilizadas: bad-words
+
+Melhoria 5: Adicionada a funcionalidade de exportar a lista de tarefas visíveis (filtradas) para um arquivo PDF, permitindo ao usuário salvar ou imprimir sua lista.
+
+- Abordagem técnica:
+  - Utilizou-se a biblioteca jsPDF.
+  - Criado o método exportToPDF() que:
+  - Inicia um novo documento PDF.
+  - Define o título "Lista de Tarefas" no topo.
+  - Percorre a lista de tarefas filtradas (filteredTodos()), numerando cada uma e indicando seu status ([Concluída] ou [Pendente]).
+  - Cuida do espaço vertical (y) e adiciona uma nova página automaticamente se necessário.
+  - Salva o arquivo com o nome lista-de-tarefas.pdf.
+
+- Bibliotecas utilizadas: jsPDF
+
+Melhoria 6: 
