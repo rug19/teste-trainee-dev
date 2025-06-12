@@ -12,6 +12,7 @@
 .header-title {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .header-title h1 {
@@ -24,7 +25,11 @@
 }
 
 .header-logo {
+  position: absolute;
+  left: 0;
   height: auto;
   width: 150px;
   filter: brightness(100);
+  margin-left: 20px;
+
 }
