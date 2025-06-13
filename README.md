@@ -177,3 +177,9 @@ Melhoria 6: Todos os alert() e confirm() nativos do navegador foram substituído
   - Substituídos os confirm() por Swal.fire({ showCancelButton: true, ... }), capturando a confirmação do usuário por meio de then() e result.isConfirmed.
 
 - Bibliotecas utilizadas: sweetalert2
+
+### Relatório de Melhorias (Novas funcionalidades)
+
+- Resposividade para dispositivos moveis.
+- Contador de tarefas, mostrar o usuário as tarefas concluídas e as que ainda faltam para concluir.
+- Adicionar o status de prioridade para verificar o grau de importância da tarefa. 
